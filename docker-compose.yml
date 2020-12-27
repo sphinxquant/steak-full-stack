@@ -14,5 +14,5 @@ services:
     volumes:
       - ${PWD}:/usr/src/app
     ports:
-      - 19234:19234
+      - 8001:8000
     restart: 'no'
