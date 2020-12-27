@@ -104,6 +104,10 @@ post_install:
 	@mkdir -p logs
 .PHONY: post_install
 
+start: install
+	${NODEMON} index.ts
+.PHONY: start
+
 clean:
 	@rm -rf node_modules
 	@rm -rf server/node_modules
