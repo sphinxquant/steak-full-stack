@@ -1,0 +1,10 @@
+{
+  "name": "@internal/lib",
+  "version": "0.0.0",
+  "description": "A hapi rest API probably",
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

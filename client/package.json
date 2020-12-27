@@ -1,0 +1,7 @@
+{
+  "name": "@internal/client",
+  "version": "0.0.0",
+  "description": "A react project probably",
+  "main": "index.js",
+  "license": "MIT"
+}
