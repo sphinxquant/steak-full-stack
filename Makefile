@@ -96,7 +96,7 @@ build_client: install
 
 install:
 	$(YARN) install --frozen-lockfile --silent --no-progress --non-interactive --check-files
-	$(YARN) --cwd ./lib install --frozen-lockfile --silent --no-progress --non-interactive --check-files
+	$(YARN) --cwd ./server install --frozen-lockfile --silent --no-progress --non-interactive --check-files
 	$(YARN) --cwd ./client install --frozen-lockfile --silent --no-progress --non-interactive --check-files
 .PHONY: install
 
@@ -106,7 +106,7 @@ post_install:
 
 clean:
 	@rm -rf node_modules
-	@rm -rf lib/node_modules
+	@rm -rf server/node_modules
 	@rm -rf client/node_modules
 	$(YARN) cache clean --no-progress --silent
 .PHONY: clean
@@ -141,7 +141,7 @@ test_client:
 
 pretty: $(PRETTIER)
 	$(PRETTIER) --config ./.prettierrc.js --write \
-		'./lib/**/**/*.js' \
+		'./server/**/**/*.js' \
 		'./scripts/*.js' \
 		./index.js
 .PHONY: $(PRETTIER)

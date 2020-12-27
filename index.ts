@@ -1,4 +1,4 @@
-import app from '@internal/lib';
+import app from '@internal/server';
 import path from 'path';
 
 

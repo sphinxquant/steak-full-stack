@@ -1055,7 +1055,7 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@internal/lib@link:./lib":
+"@internal/server@link:./server":
   version "0.0.0"
   uid ""
 
