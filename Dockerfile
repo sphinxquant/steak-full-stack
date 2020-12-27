@@ -1,4 +1,4 @@
-FROM node:14 AS base
+FROM node:14.15.2 AS base
 
 ARG USER_NAME=dockeruser
 ARG UID=1000

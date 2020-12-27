@@ -96,6 +96,7 @@ build_client: install
 
 install:
 	$(YARN) install --frozen-lockfile --silent --no-progress --non-interactive --check-files
+	$(YARN) --cwd ./lib install --frozen-lockfile --silent --no-progress --non-interactive --check-files
 	$(YARN) --cwd ./client install --frozen-lockfile --silent --no-progress --non-interactive --check-files
 .PHONY: install
 
@@ -105,6 +106,7 @@ post_install:
 
 clean:
 	@rm -rf node_modules
+	@rm -rf lib/node_modules
 	@rm -rf client/node_modules
 	$(YARN) cache clean --no-progress --silent
 .PHONY: clean
