@@ -11,8 +11,7 @@
     ]
   },
   "dependencies": {
-    "@internal/client": "file:client",
-    "@internal/server": "file:server"
+    "@internal/server": "link:./server"
   },
   "scripts": {
     "start": "make start"
