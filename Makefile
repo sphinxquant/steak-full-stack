@@ -23,7 +23,6 @@ MAKEFLAGS += --silent
 # Get paths to programs
 NODE := $(shell which node)
 YARN := $(shell which yarn)
-NOMAD := $(shell which nomad)
 SUDO := $(shell which sudo)
 DOCKER_COMPOSE := /usr/local/bin/docker-compose
 
@@ -32,6 +31,7 @@ NYC := node_modules/.bin/nyc
 LAB := node_modules/.bin/lab
 PRETTIER := node_modules/.bin/prettier
 NODEMON := node_modules/.bin/nodemon
+LERNA := node_modules/.bin/lerna
 
 NODE_ARGS := --max-old-space-size=100000 --trace-deprecation
 
@@ -95,9 +95,10 @@ build_client: install
 #=============================================================================
 
 install:
-	$(YARN) install --frozen-lockfile --silent --no-progress --non-interactive --check-files
+	# $(YARN) install --frozen-lockfile --silent --no-progress --non-interactive --check-files
+	$(LERNA) bootstrap 
 	$(YARN) --cwd ./server install --frozen-lockfile --silent --no-progress --non-interactive --check-files
-	$(YARN) --cwd ./client install --frozen-lockfile --silent --no-progress --non-interactive --check-files
+	# $(YARN) --cwd ./client install --frozen-lockfile --silent --no-progress --non-interactive --check-files
 .PHONY: install
 
 post_install:
@@ -105,13 +106,12 @@ post_install:
 .PHONY: post_install
 
 start: install
-	${NODEMON} index.ts
+	${LERNA} exec --parallel -- yarn watch &
+	${NODEMON} --watch server index.ts
 .PHONY: start
 
 clean:
-	@rm -rf node_modules
-	@rm -rf server/node_modules
-	@rm -rf client/node_modules
+	${LERNA} clean -y
 	$(YARN) cache clean --no-progress --silent
 .PHONY: clean
 
