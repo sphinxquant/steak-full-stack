@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "description": "Information is Key",
   "main": "index.js",
-  "type": "commonjs",
   "private": true,
   "license": "MIT",
   "workspaces": {
