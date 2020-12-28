@@ -1,9 +1,9 @@
 #=============================================================================
-# Makefile for testing and running the SponseredBy
+# Makefile for testing and running the sponsored-by
 #
 #=============================================================================
 CMD ?= /bin/bash
-CONTAINER_NAME ?= sponsered-by-dev
+CONTAINER_NAME ?= sponsored-by-dev
 
 export UID ?= ${shell id -u}
 export GID ?= ${shell id -g}
@@ -65,7 +65,7 @@ up: $(DOCKER_COMPOSE)
 		--no-color \
 		--quiet-pull \
 		--remove-orphans \
-		sponsered-by-dev
+		sponsored-by-dev
 .PHONY: up
 
 iup: $(DOCKER_COMPOSE)
@@ -73,7 +73,7 @@ iup: $(DOCKER_COMPOSE)
 		--no-color \
 		--quiet-pull \
 		--remove-orphans \
-		sponsered-by-dev
+		sponsored-by-dev
 .PHONY: iup
 
 stop: $(DOCKER_COMPOSE)

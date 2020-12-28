@@ -1,5 +1,5 @@
 {
-  "name": "@sponsered/app",
+  "name": "@sponsored/app",
   "private": true,
   "version": "1.0.0",
   "main": "dist/index.js",

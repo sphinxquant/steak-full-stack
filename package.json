@@ -1,10 +1,9 @@
 {
-  "name": "sponsered",
+  "name": "sponsored",
   "version": "0.0.0",
   "description": "Information is Key",
   "main": "index.js",
   "private": true,
-  "license": "MIT",
   "workspaces": {
     "packages": [
       "./packages/*",
