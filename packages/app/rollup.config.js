@@ -4,8 +4,12 @@ import pkg from './package.json';
 
 export default [
   {
-    input: 'src/index.tsx',
-    external: Object.keys(pkg.peerDependencies || {}),
+    preserveModules: true,
+    input: 'src/index.ts',
+    external: [
+      ...Object.keys(pkg.peerDependencies || {}),
+      ...Object.keys(pkg.dependencies || {}),
+    ],
     plugins: [
       typescript({
         tsconfig: './tsconfig.build.json',

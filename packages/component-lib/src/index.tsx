@@ -1,5 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-export const HelloWorld = () => {
-  return <p>Hello World</p>;
-};
+interface Props {
+  message?: string;
+}
+/**
+ * Main Component
+ */
+function HelloWorld(props: Props) {
+  useEffect(() => {
+    console.log('Incoming message: ', props.message);
+  }, [props.message]);
+  return <div>{props.message ?? 'No Message'}</div>;
+}
+
+export { HelloWorld };
