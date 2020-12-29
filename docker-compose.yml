@@ -1,7 +1,7 @@
 ---
 version: '3.4'
 services:
-  sponsered-by-dev:
+  sponsored-by-dev:
     build:
       context: .
       dockerfile: Dockerfile
@@ -9,7 +9,7 @@ services:
         UID: ${UID:-1000}
         GID: ${GID:-1000}
         USER_NAME: ${DOCKER_USER:-dockeruser}
-    image: sponsered-by-dev:latest
+    image: sponsored-by-dev:latest
     working_dir: /usr/src/app
     volumes:
       - ${PWD}:/usr/src/app
