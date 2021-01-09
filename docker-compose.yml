@@ -11,8 +11,29 @@ services:
         USER_NAME: ${DOCKER_USER:-dockeruser}
     image: sponsored-by-dev:latest
     working_dir: /usr/src/app
+    depends_on:
+      mariadb:
+        condition: service_healthy
     volumes:
       - ${PWD}:/usr/src/app
     ports:
       - 8001:8000
     restart: 'no'
+
+  mariadb:
+    image: mariadb:10.5
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-veryunsecurepass}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-sponsored}
+      MYSQL_USER: ${MYSQL_USER:-maria}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-heytheredelilah}
+    ports:
+      - 3306:3306
+    healthcheck:
+      test: 'mysqladmin ping --silent'
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: on-failure
+    volumes:
+      - ${PWD}/server/database:/docker-entrypoint-initdb.d

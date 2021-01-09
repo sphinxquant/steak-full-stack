@@ -23,7 +23,6 @@ MAKEFLAGS += --silent
 # Get paths to programs
 NODE := $(shell which node)
 YARN := $(shell which yarn)
-SUDO := $(shell which sudo)
 DOCKER_COMPOSE := /usr/local/bin/docker-compose
 
 ESLINT := node_modules/.bin/eslint
@@ -76,8 +75,15 @@ iup: $(DOCKER_COMPOSE)
 		sponsored-by-dev
 .PHONY: iup
 
-stop: $(DOCKER_COMPOSE)
+down: $(DOCKER_COMPOSE)
 	${TTY_PREFIX} $(DOCKER_COMPOSE) down \
+		--remove-orphans \
+		--volumes \
+		--rmi local
+.PHONY: down
+
+stop: $(DOCKER_COMPOSE)
+	${TTY_PREFIX} $(DOCKER_COMPOSE) stop \
 		--remove-orphans \
 		--volumes \
 		--rmi local
@@ -113,6 +119,7 @@ start: install
 clean:
 	${LERNA} clean -y
 	$(YARN) cache clean --no-progress --silent
+	
 .PHONY: clean
 
 #=============================================================================
