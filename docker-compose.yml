@@ -9,6 +9,11 @@ services:
         UID: ${UID:-1000}
         GID: ${GID:-1000}
         USER_NAME: ${DOCKER_USER:-dockeruser}
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-sponsored}
+      MYSQL_HOST: mariadb
+      MYSQL_USER: ${MYSQL_USER:-maria}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-heytheredelilah}
     image: sponsored-by-dev:latest
     working_dir: /usr/src/app
     depends_on:
