@@ -15,7 +15,7 @@ const CreateServer = (clientPath: string) => {
   app.use(helmet());
   app.use(bodyParser.json());
 
-  app.use('/', routes);
+  app.use('/api', routes);
 
   app.listen(PORT, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);

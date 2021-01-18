@@ -3,6 +3,6 @@ import entity from './entity';
 
 const routes = Router();
 
-routes.use('/entity', entity);
+routes.use('/v1', entity);
 
 export default routes;
