@@ -1,4 +1,4 @@
-use `sponsored`
+use `steakcoin`
 source /docker-entrypoint-initdb.d/schema/Entity.sql
 source /docker-entrypoint-initdb.d/schema/Media.sql
 source /docker-entrypoint-initdb.d/sampleData/1.Entity.sql

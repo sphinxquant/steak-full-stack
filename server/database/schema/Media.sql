@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `sponsored`.`Media` (
+CREATE TABLE IF NOT EXISTS `steakcoin`.`Media` (
   id VARCHAR(255) DEFAULT UUID(),
   media_id VARCHAR(255) DEFAULT UUID(),
   created_at datetime DEFAULT CURRENT_TIMESTAMP,
@@ -10,8 +10,8 @@ CREATE TABLE IF NOT EXISTS `sponsored`.`Media` (
 
 
 
-ALTER TABLE `sponsored`.`Media`
-  ADD CONSTRAINT FOREIGN KEY (`creator_id`) REFERENCES `sponsored`.`Entity` (`id`);
+ALTER TABLE `steakcoin`.`Media`
+  ADD CONSTRAINT FOREIGN KEY (`creator_id`) REFERENCES `steakcoin`.`Entity` (`id`);
 
-ALTER TABLE `sponsored`.`Media`
-  ADD CONSTRAINT FOREIGN KEY (`sponsor_id`) REFERENCES `sponsored`.`Entity` (`id`);
+ALTER TABLE `steakcoin`.`Media`
+  ADD CONSTRAINT FOREIGN KEY (`sponsor_id`) REFERENCES `steakcoin`.`Entity` (`id`);

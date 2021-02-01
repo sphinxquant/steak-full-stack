@@ -33,7 +33,7 @@ const config = convict({
     name: {
       doc: 'Database name',
       format: String,
-      default: 'sponsored',
+      default: 'steakcoin',
       env: 'MYSQL_DATABASE',
     },
     user: {

@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `sponsored`.`Entity` (
+CREATE TABLE IF NOT EXISTS `steakcoin`.`Entity` (
   id VARCHAR(255) DEFAULT UUID(), 
   name VARCHAR(255),
   created_at datetime DEFAULT CURRENT_TIMESTAMP,

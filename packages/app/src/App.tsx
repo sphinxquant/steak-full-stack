@@ -2,7 +2,7 @@ import React from 'react';
 // import logo from './logo.svg';
 // import './App.css';
 
-import { HelloWorld } from '@sponsored/component-lib';
+import { HelloWorld } from '@steakcoin/component-lib';
 
 function App() {
   console.log(HelloWorld);

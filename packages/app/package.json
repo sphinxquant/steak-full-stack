@@ -1,5 +1,5 @@
 {
-  "name": "@sponsored/app",
+  "name": "@steakcoin/app",
   "private": true,
   "version": "1.0.0",
   "main": "dist/index.js",
@@ -25,6 +25,6 @@
     "typings": "^2.1.1"
   },
   "dependencies": {
-    "@sponsored/component-lib": "^1.0.0"
+    "@steakcoin/component-lib": "^1.0.0"
   }
 }

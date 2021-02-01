@@ -1,9 +1,9 @@
 #=============================================================================
-# Makefile for testing and running the sponsored-by
+# Makefile for testing and running the steakcoin
 #
 #=============================================================================
 CMD ?= /bin/bash
-CONTAINER_NAME ?= sponsored-by-dev
+CONTAINER_NAME ?= steakcoin-dev
 
 export UID ?= ${shell id -u}
 export GID ?= ${shell id -g}
@@ -64,7 +64,7 @@ up: $(DOCKER_COMPOSE)
 		--no-color \
 		--quiet-pull \
 		--remove-orphans \
-		sponsored-by-dev
+		steakcoin-dev
 .PHONY: up
 
 iup: $(DOCKER_COMPOSE)
@@ -72,7 +72,7 @@ iup: $(DOCKER_COMPOSE)
 		--no-color \
 		--quiet-pull \
 		--remove-orphans \
-		sponsored-by-dev
+		steakcoin-dev
 .PHONY: iup
 
 down: $(DOCKER_COMPOSE)
