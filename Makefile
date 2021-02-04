@@ -23,6 +23,7 @@ MAKEFLAGS += --silent
 # Get paths to programs
 NODE := $(shell which node)
 YARN := $(shell which yarn)
+LERNA := $(shell which lerna)
 DOCKER_COMPOSE := /usr/local/bin/docker-compose
 
 ESLINT := node_modules/.bin/eslint
@@ -30,7 +31,6 @@ NYC := node_modules/.bin/nyc
 LAB := node_modules/.bin/lab
 PRETTIER := node_modules/.bin/prettier
 NODEMON := node_modules/.bin/nodemon
-LERNA := node_modules/.bin/lerna
 
 NODE_ARGS := --max-old-space-size=100000 --trace-deprecation
 
