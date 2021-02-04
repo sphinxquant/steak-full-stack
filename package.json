@@ -11,14 +11,15 @@
     ]
   },
   "dependencies": {
-    "@internal/server": "link:./server"
+    "@internal/server": "link:./server",
+    "yarn": "^1.22.10"
   },
   "scripts": {
     "start": "make start"
   },
   "engineStrict": true,
   "engines": {
-    "node": "14.15.2"
+    "node": ">14.15.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",

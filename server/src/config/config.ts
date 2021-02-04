@@ -1,5 +1,18 @@
 import convict from 'convict';
-import path from 'path';
+import dotenv from 'dotenv';
+import path, { join } from 'path';
+
+dotenv.config();
+const defaultEnv = 'production';
+const env = process.env.NODE_ENV || defaultEnv;
+const envPath = join(__dirname, '..', `.env.${env}`);
+dotenv.config({ path: envPath });
+
+convict.addFormat({
+  name: 'string-array',
+  validate: (val) => {},
+  coerce: (val) => val.split(',').map((item: string) => item.trim()),
+});
 
 const config = convict({
   env: {
@@ -15,6 +28,34 @@ const config = convict({
       default: 8000,
       env: 'PORT',
       arg: 'port',
+    },
+  },
+  auth: {
+    jwtSecret: {
+      doc: 'Super secret tech',
+      format: '*',
+      default: 'VerySecureSecrete',
+      env: 'JWT_SECRET',
+    },
+  },
+  twitter: {
+    consumerKey: {
+      doc: 'Twitter API Key',
+      format: '*',
+      default: '',
+      env: 'TWITTER_API_KEY',
+    },
+    consumerSecret: {
+      doc: 'Twitter API secret key',
+      format: '*',
+      default: '',
+      env: 'TWITTER_API_SECRET',
+    },
+    callbackURL: {
+      doc: 'call back endpoint for twitter',
+      format: '*',
+      default: 'http://127.0.0.1:8000/auth/twitter/callback',
+      env: 'TWITTER_CALLBACK_URL',
     },
   },
   db: {
@@ -62,8 +103,6 @@ const config = convict({
     },
   },
 });
-
-// config.get('env');
 
 config.validate({ allowed: 'strict' });
 
