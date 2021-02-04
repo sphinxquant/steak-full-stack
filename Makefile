@@ -24,7 +24,7 @@ MAKEFLAGS += --silent
 NODE := $(shell which node)
 YARN := $(shell which yarn)
 LERNA := $(shell which lerna)
-DOCKER_COMPOSE := /usr/local/bin/docker-compose
+DOCKER_COMPOSE := $(shell which docker-compose)
 
 ESLINT := node_modules/.bin/eslint
 NYC := node_modules/.bin/nyc
@@ -48,11 +48,6 @@ all: install start test stop
 #=============================================================================
 # Installation/setup rules
 
-
-
-# Install docker-compose
-$(DOCKER_COMPOSE):
-	$(MAKE) install_docker_compose
 
 
 build: $(DOCKER_COMPOSE)
