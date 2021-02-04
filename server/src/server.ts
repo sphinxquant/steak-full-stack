@@ -1,4 +1,6 @@
 import express from 'express';
+import https from 'https';
+import fs from 'fs';
 import bodyParser from 'body-parser';
 import helmet from 'helmet';
 import cors from 'cors';
@@ -54,9 +56,24 @@ const CreateServer = (clientPath: string) => {
 
   app.use('/api', routes);
 
-  app.listen(PORT, () => {
-    console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
-  });
+  if (config.env === 'production') {
+    const httpsServer = https.createServer(
+      {
+        key: fs.readFileSync(config.ssl.key),
+        cert: fs.readFileSync(config.ssl.cert),
+        ca: fs.readFileSync(config.ssl.ca),
+      },
+      app
+    );
+
+    httpsServer.listen(PORT, () => {
+      console.log(`HTTPS Server running on port ${PORT}`);
+    });
+  } else {
+    app.listen(PORT, () => {
+      console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
+    });
+  }
 };
 
 export default CreateServer;

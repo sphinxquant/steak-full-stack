@@ -21,6 +21,26 @@ const config = convict({
     default: 'development',
     env: 'NODE_ENV',
   },
+  ssl: {
+    key: {
+      doc: 'Location of private key',
+      format: '*',
+      default: '/etc/letsencrypt/live/steakcoins.com/privkey.pem',
+      env: 'SSL_KEY',
+    },
+    cert: {
+      doc: 'Location of ssl full chain',
+      format: '*',
+      default: '/etc/letsencrypt/live/steakcoins.com/fullchain.pem',
+      env: 'SSL_FULLCHAIN',
+    },
+    ca: {
+      doc: 'Location of ssl chain pem',
+      format: '*',
+      default: '/etc/letsencrypt/live/steakcoins.com/chain.pem',
+      env: 'SSL_CHAIN',
+    },
+  },
   server: {
     port: {
       doc: 'The port to bind.',
