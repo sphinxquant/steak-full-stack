@@ -29,6 +29,8 @@ const CreateServer = (clientPath: string) => {
   app.use(helmet());
   app.use(bodyParser.json());
 
+  app.use(express.static(__dirname, { dotfiles: 'allow' }));
+
   app.get('/', isLoggedIn, (req: express.Request, res: express.Response) => {
     console.log(req.user);
     res.send(`Hello world ${req}`);
