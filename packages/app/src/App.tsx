@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
-import { HelloWorld } from '@steakcoin/component-lib';
+import { Contexts, Pages } from '@steakcoin/component-lib';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -19,14 +19,30 @@ const Container = styled.div`
 `;
 
 function App() {
-  console.log(HelloWorld);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const login = () => {
+    setIsLoggedIn(true);
+  };
+
+  const logout = () => {
+    setIsLoggedIn(false);
+  };
+
   return (
     <div className="App">
       <body className="App-header">
         <Container>
           <GlobalStyle />
-          <p>Hello hello</p>
-          <HelloWorld />
+          <Contexts.AuthContext.Provider
+            value={{
+              isLoggedIn: isLoggedIn,
+              login: login,
+              logout: logout,
+            }}
+          >
+            <Pages.LoginPage />
+          </Contexts.AuthContext.Provider>
         </Container>
       </body>
     </div>

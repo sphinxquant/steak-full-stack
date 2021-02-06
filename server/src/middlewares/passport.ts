@@ -2,11 +2,16 @@ import passport from 'passport';
 import { Strategy as TwitterStrategy } from 'passport-twitter';
 import config from '../config';
 
-passport.serializeUser(function (user: any, done) {
-  done(null, user);
+passport.serializeUser(function (user, done) {
+  const userCookie = user as any;
+  done(null, {
+    id: userCookie.id,
+    username: userCookie.username,
+    displayName: userCookie.displayName,
+  });
 });
 
-passport.deserializeUser(function (user: any, done) {
+passport.deserializeUser<any, any>(function (user, done) {
   done(null, user);
 });
 

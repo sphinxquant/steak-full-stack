@@ -1,12 +1,9 @@
 import express from 'express';
-import https from 'https';
-import fs from 'fs';
 import bodyParser from 'body-parser';
 import helmet from 'helmet';
 import cors from 'cors';
 import cookieSession from 'cookie-session';
 import passport from './middlewares/passport';
-import { isLoggedIn } from './middlewares/auth';
 
 import config from './config';
 import routes from './routes';
@@ -17,8 +14,11 @@ const CreateServer = (clientPath: string) => {
 
   app.use(
     cookieSession({
+      domain: 'steakcoins.com',
+      secureProxy: true,
       name: 'twitter-auth-session',
-      keys: ['key1', 'key2'],
+      keys: [config.auth.jwtSecret, config.auth.jwtSecretTwo],
+      maxAge: 24 * 60 * 60 * 100,
     })
   );
 
@@ -33,47 +33,11 @@ const CreateServer = (clientPath: string) => {
 
   app.use(express.static(__dirname, { dotfiles: 'allow' }));
 
-  app.get('/', isLoggedIn, (req: express.Request, res: express.Response) => {
-    console.log(req.user);
-    res.send(`Hello world ${req}`);
-  });
-  app.get('/logout', (req: express.Request, res: express.Response) => {
-    req.session = null;
-    req.logout();
-    res.redirect('/');
-  });
-  app.get('/auth/error', (req: express.Request, res: express.Response) =>
-    res.send('Unknown Error')
-  );
-  app.get('/auth/twitter', passport.authenticate('twitter'));
-  app.get(
-    '/auth/twitter/callback',
-    passport.authenticate('twitter', { failureRedirect: '/auth/error' }),
-    function (req: express.Request, res: express.Response) {
-      res.redirect('/');
-    }
-  );
-
   app.use('/api', routes);
 
-  if (config.env === 'production') {
-    const httpsServer = https.createServer(
-      {
-        key: fs.readFileSync(config.ssl.key),
-        cert: fs.readFileSync(config.ssl.cert),
-        ca: fs.readFileSync(config.ssl.ca),
-      },
-      app
-    );
-
-    httpsServer.listen(PORT, () => {
-      console.log(`HTTPS Server running on port ${PORT}`);
-    });
-  } else {
-    app.listen(PORT, () => {
-      console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
-    });
-  }
+  app.listen(PORT, () => {
+    console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
+  });
 };
 
 export default CreateServer;

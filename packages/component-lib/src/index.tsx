@@ -1,16 +1,3 @@
-import React, { useEffect } from 'react';
-
-interface Props {
-  message?: string;
-}
-/**
- * Main Component
- */
-function HelloWorld(props: Props) {
-  useEffect(() => {
-    console.log('Incoming message: ', props.message);
-  }, [props.message]);
-  return <div>{props.message ?? 'No Message'}</div>;
-}
-
-export { HelloWorld };
+export * as Components from './components';
+export * as Contexts from './contexts';
+export * as Pages from './pages';
