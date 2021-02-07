@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { styleReset, List, ListItem, Divider } from 'react95';
+// import original from 'react95/dist/themes/original';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { AuthContext, LoginPage } from '@steakcoin/component-lib';
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
   @font-face {
     font-family: 'ms_sans_serif';
     font-weight: 400;
@@ -41,27 +43,28 @@ function App() {
 
   return (
     <div>
-      <body>
-        <Router>
-          <Container>
-            <GlobalStyle />
-            <ThemeProvider theme={{}}>
-              <AuthContext.Provider
-                value={{
-                  isLoggedIn: isLoggedIn,
-                  token,
-                  login: login,
-                  logout: logout,
-                }}
-              >
-                <Route path="/">
-                  <LoginPage />
-                </Route>
-              </AuthContext.Provider>
-            </ThemeProvider>
-          </Container>
-        </Router>
-      </body>
+      <Router>
+        <Container>
+          <GlobalStyles />
+          <ThemeProvider theme={{}}>
+            <AuthContext.Provider
+              value={{
+                isLoggedIn: isLoggedIn,
+                token,
+                login: login,
+                logout: logout,
+              }}
+            >
+              <List>
+                <ListItem>🎤 Sing</ListItem>
+                <ListItem>💃🏻 Dance</ListItem>
+                <Divider />
+                <ListItem disabled>😴 Sleep</ListItem>
+              </List>
+            </AuthContext.Provider>
+          </ThemeProvider>
+        </Container>
+      </Router>
     </div>
   );
 }
