@@ -64,6 +64,12 @@ function App() {
               >
                 <Route path="/">
                   <LoginPage />
+                  <List>
+                    <ListItem>🎤 Sing</ListItem>
+                    <ListItem>💃🏻 Dance</ListItem>
+                    <Divider />
+                    <ListItem disabled>😴 Sleep</ListItem>
+                  </List>
                 </Route>
               </AuthContext.Provider>
             </ThemeProvider>
