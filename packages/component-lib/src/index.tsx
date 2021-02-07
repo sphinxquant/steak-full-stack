@@ -3,5 +3,3 @@ import { AuthContext } from './contexts';
 import { LoginPage } from './pages';
 
 export { Header, Login, AuthContext, LoginPage };
-
-export default AuthContext;

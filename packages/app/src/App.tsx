@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 // import original from 'react95/dist/themes/original';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import AuthContext from '@steakcoin/component-lib';
+import { AuthContext, LoginPage } from '@steakcoin/component-lib';
 
 // const GlobalStyle = createGlobalStyle`
 //   @font-face {
@@ -59,9 +59,9 @@ function App() {
               logout: logout,
             }}
           >
-            {/* <Route path="/">
-              <Pages.LoginPage />
-            </Route> */}
+            <Route path="/">
+              <LoginPage />
+            </Route>
           </AuthContext.Provider>
         </Router>
       </body>
