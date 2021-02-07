@@ -122,7 +122,9 @@ start_client:
 
 clean:
 	${LERNA} clean -y
+	${LERNA} exec -- yarn clean
 	$(YARN) cache clean --no-progress --silent
+	rm -rf node_modules/
 .PHONY: clean
 
 #=============================================================================

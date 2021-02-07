@@ -6,7 +6,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "watch": "rollup -cw",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "clean": "rm -rf dist/"
   },
   "peerDependencies": {
     "react": "^17.0.1",

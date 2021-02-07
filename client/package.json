@@ -26,7 +26,8 @@
   "scripts": {
     "start": "parcel src/index.html --out-dir build/",
     "watch": "parcel watch src/index.html --out-dir build/",
-    "build": "parcel build src/index.html --out-dir build/"
+    "build": "parcel build src/index.html --out-dir build/",
+    "clean": "rm -rf build/ .cache"
   },
   "eslintConfig": {
     "extends": [
