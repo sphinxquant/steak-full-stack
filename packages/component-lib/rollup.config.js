@@ -15,6 +15,6 @@ export default [
       }),
       commonjs(),
     ],
-    output: [{ dir: './dist', format: 'cjs', sourcemap: true }],
+    output: [{ dir: './dist', sourcemap: true }],
   },
 ];
