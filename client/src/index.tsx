@@ -1,11 +1,17 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import styled from 'styled-components';
+
 import { App } from '@steakcoin/app';
+
+const SApp = styled(App)`
+  height: 100%;
+  width: 100%;
+`;
 
 ReactDOM.render(
   <React.Fragment>
-    <App />
+    <SApp />
   </React.Fragment>,
   document.getElementById('app')
 );

@@ -1,20 +1,37 @@
 import React, { useState } from 'react';
-
+import { BrowserRouter as Router } from 'react-router-dom';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { styleReset, List, ListItem, Divider } from 'react95';
-// import original from 'react95/dist/themes/original';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { AuthContext, LoginPage } from '@steakcoin/component-lib';
+import { styleReset } from 'react95';
+import original from 'react95/dist/themes/original';
+import ms_sans_serif from 'react95/dist/fonts/ms_sans_serif.woff2';
+import ms_sans_serif_bold from 'react95/dist/fonts/ms_sans_serif_bold.woff2';
+
+import { AuthContext, LoginPage, ProfilePage } from '@steakcoin/component-lib';
 
 const GlobalStyles = createGlobalStyle`
+  ${styleReset}
+  html {
+    height: 100%;
+    width: 100%;
+  }
+  body {
+    height: 100%;
+    width: 100%;
+  }
+  #app {
+    height: 100%;
+    width: 100%;
+  }
   @font-face {
     font-family: 'ms_sans_serif';
+    src: url('${ms_sans_serif}') format('woff2');
     font-weight: 400;
     font-style: normal
   }
   @font-face {
     font-family: 'ms_sans_serif';
+    src: url('${ms_sans_serif_bold}') format('woff2');
     font-weight: bold;
     font-style: normal
   }
@@ -24,7 +41,9 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const Container = styled.div`
-  padding: 40px;
+  width: 100%;
+  height: 100%;
+  background-color: teal;
 `;
 
 function App() {
@@ -42,30 +61,23 @@ function App() {
   };
 
   return (
-    <div>
+    <Container>
       <Router>
-        <Container>
-          <GlobalStyles />
-          <ThemeProvider theme={{}}>
-            <AuthContext.Provider
-              value={{
-                isLoggedIn: isLoggedIn,
-                token,
-                login: login,
-                logout: logout,
-              }}
-            >
-              <List>
-                <ListItem>🎤 ok... yayayaya works</ListItem>
-                <ListItem>💃🏻 meow</ListItem>
-                <Divider />
-                <ListItem disabled>😴 Sleep</ListItem>
-              </List>
-            </AuthContext.Provider>
-          </ThemeProvider>
-        </Container>
+        <GlobalStyles />
+        <ThemeProvider theme={original}>
+          <AuthContext.Provider
+            value={{
+              isLoggedIn: isLoggedIn,
+              token,
+              login: login,
+              logout: logout,
+            }}
+          >
+            {isLoggedIn ? <ProfilePage /> : <LoginPage />}
+          </AuthContext.Provider>
+        </ThemeProvider>
       </Router>
-    </div>
+    </Container>
   );
 }
 
