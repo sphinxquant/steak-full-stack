@@ -1,4 +1,5 @@
 import typescript from 'rollup-plugin-typescript2';
+import commonjs from '@rollup/plugin-commonjs';
 
 import pkg from './package.json';
 
@@ -12,7 +13,8 @@ export default [
         declarationDir: './dist',
         tsconfigOverride: { compilerOptions: { module: 'es2015' } },
       }),
+      commonjs(),
     ],
-    output: [{ dir: './dist', format: 'cjs', sourcemap: false }],
+    output: [{ dir: './dist', format: 'cjs', sourcemap: true }],
   },
 ];

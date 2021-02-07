@@ -1,2 +1,4 @@
-export * as Header from './Header';
-export * as Login from './Login';
+import { Header } from './Header';
+import { Login } from './Login';
+
+export { Header, Login };

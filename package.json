@@ -15,7 +15,9 @@
     "yarn": "^1.22.10"
   },
   "scripts": {
-    "start": "make start"
+    "start": "make start",
+    "start:client": "make start_client",
+    "start:server": "make start_server"
   },
   "engineStrict": true,
   "engines": {

@@ -6,9 +6,13 @@
     "@steakcoin/app": "^1.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "react95": "^3.6.1",
+    "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-typescript": "^8.1.1",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -16,6 +20,8 @@
     "@types/jest": "^26.0.19",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/styled-components": "^5.1.7",
     "parcel-bundler": "^1.12.4",
     "typescript": "^4.1.3"
   },

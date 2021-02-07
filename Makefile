@@ -111,6 +111,15 @@ start: install
 	${NODEMON} --watch server index.ts
 .PHONY: start
 
+start_server:
+	${NODEMON} --watch server index.ts
+.PHONY: start
+
+start_client:
+	${LERNA} exec --scope @internal/client -- yarn start
+.PHONY: start_client
+
+
 clean:
 	${LERNA} clean -y
 	$(YARN) cache clean --no-progress --silent

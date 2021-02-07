@@ -1,3 +1,7 @@
-export * as Components from './components';
-export * as Contexts from './contexts';
-export * as Pages from './pages';
+import { Header, Login } from './components';
+import { AuthContext } from './contexts';
+import { LoginPage } from './pages';
+
+export { Header, Login, AuthContext, LoginPage };
+
+export default AuthContext;
