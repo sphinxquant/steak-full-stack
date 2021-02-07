@@ -15,8 +15,6 @@ passport.deserializeUser<any, any>(function (user, done) {
   done(null, user);
 });
 
-console.log(config);
-
 passport.use(
   new TwitterStrategy(
     {
