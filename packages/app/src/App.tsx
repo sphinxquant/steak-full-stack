@@ -56,8 +56,8 @@ function App() {
               }}
             >
               <List>
-                <ListItem>🎤 Sing</ListItem>
-                <ListItem>💃🏻 Dance</ListItem>
+                <ListItem>🎤 ok... yayayaya works</ListItem>
+                <ListItem>💃🏻 meow</ListItem>
                 <Divider />
                 <ListItem disabled>😴 Sleep</ListItem>
               </List>

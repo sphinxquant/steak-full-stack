@@ -96,10 +96,8 @@ build_client: install
 #=============================================================================
 
 install:
-	# $(YARN) install --frozen-lockfile --silent --no-progress --non-interactive --check-files
-	$(LERNA) bootstrap 
 	$(YARN) --cwd ./server install --frozen-lockfile --silent --no-progress --non-interactive --check-files
-	# $(YARN) --cwd ./client install --frozen-lockfile --silent --no-progress --non-interactive --check-files
+	$(LERNA) bootstrap 
 .PHONY: install
 
 post_install:
@@ -107,7 +105,8 @@ post_install:
 .PHONY: post_install
 
 start: install
-	${LERNA} exec --parallel -- yarn watch &
+	${LERNA} exec --ignore @internal/client --parallel -- yarn watch &
+	${LERNA} exec --scope @internal/client -- yarn watch &
 	${NODEMON} --watch server index.ts
 .PHONY: start
 
