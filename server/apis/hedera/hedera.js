@@ -381,6 +381,7 @@ function decryptSpeical(special, hederaCreds) {
 
 async function getUserFromUserTable(twitterId, hederaCreds) {
   if (!userTable[twitterId]) {
+    log.info('Refetching user table!');
     userTable = await getUserTableFromFile(hederaCreds);
   }
   const user = userTable[twitterId];
