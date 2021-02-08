@@ -5,6 +5,7 @@
   "type": "module",
   "license": "MIT",
   "dependencies": {
+    "@steakcoin/hedera": "link:./apis/hedera",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "convict": "^6.0.0",
