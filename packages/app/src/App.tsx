@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 
@@ -61,11 +61,18 @@ function App() {
     setToken('');
   };
 
-  const { data: userProfile, loading, error } = useGet(
+  const { data: success, loading, error } = useGet(
     '/api/v1/auth/login/success'
   );
 
-  console.log(userProfile);
+  useEffect(() => {
+    if (success?.user) {
+      setIsLoggedIn(true);
+      setToken(success.user?.displayName);
+    }
+  }, [success]);
+
+  console.log(success);
 
   return (
     <Container>
