@@ -90,14 +90,10 @@ export const ProfilePage = ({}) => {
           </WindowHeader>
           <WindowContent>
             <p>{success?.user?.hederaId}</p>
-            <p>{success?.user?.Spcial}</p>
           </WindowContent>
           <Panel variant="well" className="footer">
-            Put some useful informations here
+            <p>{success?.user?.special}</p>
           </Panel>
-          <Button fullWidth onClick={handleSignInClick}>
-            Login Using Twitter
-          </Button>
         </Window>
       </Wrapper>
     </FullPage>
