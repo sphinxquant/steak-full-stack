@@ -373,15 +373,15 @@ const getHederaCreds = () => {
 
 let userTable = {};
 
-function decryptSpeical(speical, hederaCreds) {
-  return hedera
-    .decript(special, hederaCreds.filePrivateKey.toString())
-    .toString(CryptoJS.enc.Utf8);
+function decryptSpeical(special, hederaCreds) {
+  return decript(special, hederaCreds.filePrivateKey.toString()).toString(
+    CryptoJS.enc.Utf8
+  );
 }
 
 async function getUserFromUserTable(twitterId, hederaCreds) {
   if (!userTable[twitterId]) {
-    userTable = await hedera.getUserTableFromFile(hederaCreds);
+    userTable = await getUserTableFromFile(hederaCreds);
   }
   const user = userTable[twitterId];
 
