@@ -7,6 +7,8 @@ import original from 'react95/dist/themes/original';
 import ms_sans_serif from 'react95/dist/fonts/ms_sans_serif.woff2';
 import ms_sans_serif_bold from 'react95/dist/fonts/ms_sans_serif_bold.woff2';
 
+import { useGet } from 'restful-react';
+
 import { AuthContext, LoginPage, ProfilePage } from '@steakcoin/component-lib';
 
 const GlobalStyles = createGlobalStyle`
@@ -51,14 +53,19 @@ function App() {
   const [token, setToken] = useState('');
 
   const login = () => {
-    setIsLoggedIn(true);
-    setToken('brrrr');
+    window.open('/api/v1/auth/twitter', '_self');
   };
 
   const logout = () => {
-    setIsLoggedIn(false);
+    window.open('/api/v1/auth/logout', '_self');
     setToken('');
   };
+
+  const { data: userProfile, loading, error } = useGet(
+    '/api/v1/auth/login/success'
+  );
+
+  console.log(userProfile);
 
   return (
     <Container>
