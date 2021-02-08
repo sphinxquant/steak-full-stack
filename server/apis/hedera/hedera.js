@@ -387,8 +387,8 @@ async function getUserFromUserTable(twitterId, hederaCreds) {
   const user = userTable[twitterId];
 
   if (user?.special) {
-    const speical = decryptSpeical(user.speical, hederaCreds);
-    return { ...user, speical };
+    const special = decryptSpeical(user.special, hederaCreds);
+    return { ...user, special };
   }
   return user;
 }
