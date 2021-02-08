@@ -8,7 +8,6 @@ import {
   Toolbar,
   Panel,
 } from 'react95';
-import { FullPage } from '../../components';
 import { AuthContext } from '../../contexts/AuthContext';
 
 const Wrapper = styled.div`
