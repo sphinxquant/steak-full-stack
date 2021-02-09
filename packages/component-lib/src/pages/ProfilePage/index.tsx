@@ -14,7 +14,11 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { useGet } from 'restful-react';
 
 const Wrapper = styled.div`
-  padding: 5rem;
+  height: 100%;
+  display: flex;
+  padding: 0 10px;
+  justify-content: center;
+  align-items: center;
   background: teal;
   .window-header {
     display: flex;
@@ -50,7 +54,6 @@ const Wrapper = styled.div`
     }
   }
   .window {
-    width: 50%;
     min-height: 200px;
   }
   .window:nth-child(2) {
