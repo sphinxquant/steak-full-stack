@@ -19,6 +19,7 @@ import { useGet } from 'restful-react';
 
 const Wrapper = styled.div`
   height: 100%;
+  width: 100%;
   display: flex;
   padding: 0 10px;
   max-width: 720px;
@@ -76,11 +77,13 @@ const Wrapper = styled.div`
 
 const WrapperTop = styled(Wrapper)`
   align-items: flex-end;
+  width: 100%;
   padding-bottom: 15px;
 `;
 
 const WrapperBottom = styled(Wrapper)`
   align-items: flex-start;
+  width: 100%;
   padding-top: 15px;
 `;
 
