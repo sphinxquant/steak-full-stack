@@ -152,46 +152,26 @@ export const ProfilePage = ({}) => {
               <span className="close-icon" />
             </Button>
           </WindowHeader>
-          {loading ? (
-            <LoadingIndicator isLoading={loading} />
-          ) : (
+          <WindowContent>
             <>
-              <p>How do I access my account?</p>
-              <WindowContent>
-                {success?.user?.hederaId ? (
-                  <p>{success?.user?.hederaId}</p>
-                ) : (
-                  <>
-                    <p>
-                      It's Easy! Just go to
-                      <Anchor
-                        href="https://myhbarwallet.com/access-my-account"
-                        target="_blank"
-                      >
-                        {' '}
-                        https://myhbarwallet.com/access-my-account
-                      </Anchor>
-                    </p>
-                    <p>
-                      Click on "Software" {'->'} "Private Key" {'->'} Click
-                      Continue
-                    </p>
-                    <p>Copy in your private key. {'->'} Click Continue </p>
-                    <p>Type in your Account ID. {'->'} Click Continue </p>
-                    <p>TADA! Your wallet is setup.</p>
-                  </>
-                )}
-              </WindowContent>
-              {success?.user?.special && (
-                <>
-                  <p>Private Key:</p>
-                  <Special variant="well" className="footer">
-                    <p>{success?.user?.special}</p>
-                  </Special>
-                </>
-              )}
+              <p>
+                It's Easy! Just go to
+                <Anchor
+                  href="https://myhbarwallet.com/access-my-account"
+                  target="_blank"
+                >
+                  {' '}
+                  https://myhbarwallet.com/access-my-account
+                </Anchor>
+              </p>
+              <p>
+                Click on "Software" {'->'} "Private Key" {'->'} Click Continue
+              </p>
+              <p>Copy in your private key. {'->'} Click Continue </p>
+              <p>Type in your Account ID. {'->'} Click Continue </p>
+              <p>TADA! Your wallet is setup.</p>
             </>
-          )}
+          </WindowContent>
         </Window>
       </WrapperBottom>
     </FullPage>
