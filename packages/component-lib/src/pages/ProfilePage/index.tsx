@@ -7,6 +7,7 @@ import {
   Button,
   Toolbar,
   Panel,
+  LoadingIndicator,
 } from 'react95';
 import { FullPage } from '../../components';
 import { AuthContext } from '../../contexts/AuthContext';
@@ -55,6 +56,7 @@ const Wrapper = styled.div`
   }
   .window {
     min-height: 200px;
+    width: 100%;
   }
   .window:nth-child(2) {
     margin: 2rem;
@@ -66,6 +68,10 @@ const Wrapper = styled.div`
     line-height: 31px;
     padding-left: 0.25rem;
   }
+`;
+
+const Special = styled(Panel)`
+  overflow: scroll;
 `;
 
 export const ProfilePage = ({}) => {
@@ -91,12 +97,18 @@ export const ProfilePage = ({}) => {
               <span className="close-icon" />
             </Button>
           </WindowHeader>
-          <WindowContent>
-            <p>{success?.user?.hederaId}</p>
-          </WindowContent>
-          <Panel variant="well" className="footer">
-            <p>{success?.user?.special}</p>
-          </Panel>
+          {loading ? (
+            <LoadingIndicator isLoading={loading} />
+          ) : (
+            <>
+              <WindowContent>
+                <p>{success?.user?.hederaId}</p>
+              </WindowContent>
+              <Special variant="well" className="footer">
+                <p>{success?.user?.special}</p>
+              </Special>
+            </>
+          )}
         </Window>
       </Wrapper>
     </FullPage>

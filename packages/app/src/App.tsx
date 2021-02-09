@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 
-import { styleReset } from 'react95';
+import { styleReset, LoadingIndicator } from 'react95';
 import original from 'react95/dist/themes/original';
 import ms_sans_serif from 'react95/dist/fonts/ms_sans_serif.woff2';
 import ms_sans_serif_bold from 'react95/dist/fonts/ms_sans_serif_bold.woff2';
@@ -71,8 +71,6 @@ function App() {
       setToken(success.user?.displayName);
     }
   }, [success]);
-
-  console.log(success);
 
   return (
     <Container>
