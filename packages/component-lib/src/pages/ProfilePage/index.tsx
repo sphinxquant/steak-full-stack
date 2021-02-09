@@ -10,6 +10,8 @@ import {
   LoadingIndicator,
   Anchor,
 } from 'react95';
+import ReactGA from 'react-ga';
+
 import { FullPage } from '../../components';
 import { AuthContext } from '../../contexts/AuthContext';
 
@@ -98,6 +100,13 @@ export const ProfilePage = ({}) => {
   };
 
   const { data: success, loading, error } = useGet('/api/v1/user/hedera');
+
+  useEffect(() => {
+    ReactGA.event({
+      category: 'User',
+      action: 'Login.',
+    });
+  });
 
   return (
     <FullPage logout={handleLogoutClick}>
