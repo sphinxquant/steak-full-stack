@@ -7,8 +7,11 @@ import {
   Button,
   Toolbar,
   Panel,
+  Anchor,
 } from 'react95';
 import { AuthContext } from '../../contexts/AuthContext';
+
+import { Logo } from './logo512';
 
 const Wrapper = styled.div`
   padding: 5rem;
@@ -47,7 +50,6 @@ const Wrapper = styled.div`
     }
   }
   .window {
-    width: 50%;
     min-height: 200px;
   }
   .window:nth-child(2) {
@@ -60,6 +62,16 @@ const Wrapper = styled.div`
     line-height: 31px;
     padding-left: 0.25rem;
   }
+`;
+
+const LogoWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const LoginPage = ({}) => {
@@ -79,14 +91,23 @@ export const LoginPage = ({}) => {
           </Button>
         </WindowHeader>
         <WindowContent>
-          <p>
-            When you set &quot;resizable&quot; prop, there will be drag handle
-            in the bottom right corner (but resizing itself must be handled by
-            you tho!)
-          </p>
+          <LogoWrapper>
+            <Logo />
+            <TextWrapper>
+              <p>SteakCoin! We are the people's coin.</p>
+              <p>
+                Want to invest in SteakCoin? Getting started is easy! Just Tweet
+                at
+                <Anchor href="https://twitter.com/steakcoin" target="_blank">
+                  {' '}
+                  @Steakcoin
+                </Anchor>
+              </p>
+            </TextWrapper>
+          </LogoWrapper>
         </WindowContent>
         <Panel variant="well" className="footer">
-          Put some useful informations here
+          Claim your SteakCoin filled wallet now!
         </Panel>
         <Button fullWidth onClick={handleSignInClick}>
           Login Using Twitter
