@@ -100,7 +100,7 @@ export const LoginPage = ({}) => {
             <TextWrapper>
               <p>SteakCoin! We are the People's Token.</p>
               <p>
-                Want to invest in SteakCoin? Getting started is easy! Just Tweet
+                Want to collect SteakCoin? Getting started is easy! Just Tweet
                 at
                 <Anchor href="https://twitter.com/steakcoin" target="_blank">
                   {' '}

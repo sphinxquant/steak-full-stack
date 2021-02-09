@@ -119,7 +119,7 @@ export const ProfilePage = ({}) => {
                   <p>{success?.user?.hederaId}</p>
                 ) : (
                   <p>
-                    Want to invest in SteakCoin? Getting started is easy! Just
+                    Want to collect SteakCoin? Getting started is easy! Just
                     Tweet at
                     <Anchor
                       href="https://twitter.com/steakcoin"
