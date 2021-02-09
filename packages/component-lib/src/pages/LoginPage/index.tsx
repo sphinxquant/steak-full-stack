@@ -98,7 +98,7 @@ export const LoginPage = ({}) => {
           <LogoWrapper>
             <Logo />
             <TextWrapper>
-              <p>SteakCoin! We are the people's coin.</p>
+              <p>SteakCoin! We are the People's Token.</p>
               <p>
                 Want to invest in SteakCoin? Getting started is easy! Just Tweet
                 at

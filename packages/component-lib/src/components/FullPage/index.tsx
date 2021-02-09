@@ -21,6 +21,9 @@ interface props {
 const MainContainer = styled.div`
   height: 100%;
   min-height: 620px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const FullPage = ({ children, otherProps, logout }: props) => {

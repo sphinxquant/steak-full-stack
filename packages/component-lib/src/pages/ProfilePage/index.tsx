@@ -8,6 +8,7 @@ import {
   Toolbar,
   Panel,
   LoadingIndicator,
+  Anchor,
 } from 'react95';
 import { FullPage } from '../../components';
 import { AuthContext } from '../../contexts/AuthContext';
@@ -18,6 +19,7 @@ const Wrapper = styled.div`
   height: 100%;
   display: flex;
   padding: 0 10px;
+  max-width: 720px;
   justify-content: center;
   align-items: center;
   background: teal;
@@ -70,6 +72,16 @@ const Wrapper = styled.div`
   }
 `;
 
+const WrapperTop = styled(Wrapper)`
+  align-items: flex-end;
+  padding-bottom: 15px;
+`;
+
+const WrapperBottom = styled(Wrapper)`
+  align-items: flex-start;
+  padding-top: 15px;
+`;
+
 const Special = styled(Panel)`
   overflow: scroll;
 `;
@@ -89,7 +101,7 @@ export const ProfilePage = ({}) => {
 
   return (
     <FullPage logout={handleLogoutClick}>
-      <Wrapper>
+      <WrapperTop>
         <Window className="window">
           <WindowHeader className="window-header">
             <span>SteakCoin.exe</span>
@@ -101,16 +113,87 @@ export const ProfilePage = ({}) => {
             <LoadingIndicator isLoading={loading} />
           ) : (
             <>
+              <p>Account ID:</p>
               <WindowContent>
-                <p>{success?.user?.hederaId}</p>
+                {success?.user?.hederaId ? (
+                  <p>{success?.user?.hederaId}</p>
+                ) : (
+                  <p>
+                    Want to invest in SteakCoin? Getting started is easy! Just
+                    Tweet at
+                    <Anchor
+                      href="https://twitter.com/steakcoin"
+                      target="_blank"
+                    >
+                      {' '}
+                      @Steakcoin
+                    </Anchor>
+                  </p>
+                )}
               </WindowContent>
-              <Special variant="well" className="footer">
-                <p>{success?.user?.special}</p>
-              </Special>
+              {success?.user?.special && (
+                <>
+                  <p>Private Key:</p>
+                  <Special variant="well" className="footer">
+                    <p>{success?.user?.special}</p>
+                  </Special>
+                </>
+              )}
             </>
           )}
         </Window>
-      </Wrapper>
+      </WrapperTop>
+
+      <WrapperBottom>
+        <Window className="window">
+          <WindowHeader className="window-header">
+            <span>MyHBarWallet.exe</span>
+            <Button>
+              <span className="close-icon" />
+            </Button>
+          </WindowHeader>
+          {loading ? (
+            <LoadingIndicator isLoading={loading} />
+          ) : (
+            <>
+              <p>How do I access my account?</p>
+              <WindowContent>
+                {success?.user?.hederaId ? (
+                  <p>{success?.user?.hederaId}</p>
+                ) : (
+                  <>
+                    <p>
+                      It's Easy! Just go to
+                      <Anchor
+                        href="https://myhbarwallet.com/access-my-account"
+                        target="_blank"
+                      >
+                        {' '}
+                        https://myhbarwallet.com/access-my-account
+                      </Anchor>
+                    </p>
+                    <p>
+                      Click on "Software" {'->'} "Private Key" {'->'} Click
+                      Continue
+                    </p>
+                    <p>Copy in your private key. {'->'} Click Continue </p>
+                    <p>Type in your Account ID. {'->'} Click Continue </p>
+                    <p>TADA! Your wallet is setup.</p>
+                  </>
+                )}
+              </WindowContent>
+              {success?.user?.special && (
+                <>
+                  <p>Private Key:</p>
+                  <Special variant="well" className="footer">
+                    <p>{success?.user?.special}</p>
+                  </Special>
+                </>
+              )}
+            </>
+          )}
+        </Window>
+      </WrapperBottom>
     </FullPage>
   );
 };
