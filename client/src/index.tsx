@@ -7,7 +7,7 @@ import ReactGA from 'react-ga';
 import { App } from '@steakcoin/app';
 
 const GaApp = () => {
-  ReactGA.initialize('G-T1LKJP3SSH');
+  ReactGA.initialize('UA-189301059-1', { debug: true });
 
   return <App />;
 };
