@@ -14,7 +14,11 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { Logo } from './logo512';
 
 const Wrapper = styled.div`
-  padding: 5rem;
+  height: 100%;
+  display: flex;
+  padding: 0 10px;
+  justify-content: center;
+  align-items: center;
   background: teal;
   .window-header {
     display: flex;
