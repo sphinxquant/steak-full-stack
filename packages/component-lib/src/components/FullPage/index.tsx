@@ -19,7 +19,8 @@ interface props {
 }
 
 const MainContainer = styled.div`
-  padding-top: 50px;
+  height: 100%;
+  min-height: 620px;
 `;
 
 export const FullPage = ({ children, otherProps, logout }: props) => {
